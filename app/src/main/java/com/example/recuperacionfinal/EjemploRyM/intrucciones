@@ -1,0 +1,29 @@
+esta aplicacion recoge todos los personajes de la api
+de RyM;
+
+Para mostrarlos usamos un Recycler View en una actividad principal
+esta actividad debe tener la capacidad de ser clickable y lanzar otra act que muestre los detalles
+de cada personaje.
+
+Elementos necesarios:
+
+1 clase principal + layout(es decir un actividad)
+2 clase secundaria o de resultado + layout(es decir un actividad)
+3 adapter
+4 clase repo para la consulta de la API
+5 layout específico de cada fila del recycler
+6 service
+7 POJO para traer los datos
+
+
+Pasos para la creación:
+1 creación de la clase principal con su correspondiente layout
+2 creación de la clase secundaria con su correspondiente layout
+3creación del adapter, que esxtiende ReccyclerView. Al extender esta clase se implementan 3 metodos:
+    1 OnCreate
+    2 OnBind
+    3 GetItemCount
+4 Creacion de la interfaz repo   , coger otro ejemplo, copiar y sustituir
+5 creación del service, coger otro ejemplo, copiar y sustituir
+
+
