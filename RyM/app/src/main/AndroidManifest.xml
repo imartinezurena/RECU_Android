@@ -19,16 +19,14 @@
             android:exported="false" />
         <activity
             android:name=".EjemploRyM.ListaPersonajes"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".EjemploPartido.ListaPartidos"
             android:exported="false" />
         <activity
             android:name=".EjemploPartido.Partido"
             android:exported="false" />
-        <activity
-            android:name=".EjemploRyM.EjemploRecycler"
-            android:exported="false" />
+
     </application>
 
 </manifest>
