@@ -74,7 +74,7 @@ public class PersonajeRyM implements Serializable {
 
         ArrayList<PersonajeRyM> listadoApi = new ArrayList<PersonajeRyM>();
 
-        // Si se proporciona una lista de consejos desde el ViewModel, la utilizamos
+        // Si se proporciona una lista  desde el ViewModel, la utilizamos
         if (listadoPersonaje != null && !listadoPersonaje.isEmpty()) {
             listadoApi.addAll(listadoPersonaje);
         }

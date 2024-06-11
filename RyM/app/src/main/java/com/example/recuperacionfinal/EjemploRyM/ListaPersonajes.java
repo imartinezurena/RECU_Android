@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResult;
@@ -24,6 +25,8 @@ import com.example.recuperacionfinal.R;
 public class ListaPersonajes extends AppCompatActivity {
     private static final String CLAVE_PERSONAJE = "skere";
     RecyclerView rv;
+    ProgressBar e2pbCargando;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,15 +41,21 @@ public class ListaPersonajes extends AppCompatActivity {
         //siempre que se use un RV hacen falta estas 3 lineas
         rv = findViewById(R.id.recyclerPersonajes);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        AdapterRyM adapter=new AdapterRyM();
+        AdapterRyM adapter = new AdapterRyM();
         rv.setAdapter(adapter);
+        // Inicializa y observa los cambios en el ViewModel
 
+        modeloVista.getDatos().observe(this, personajes -> {
+            // Actualiza los datos del adaptador cuando cambia la lista de consejos en el ViewModel
+            e2pbCargando.setVisibility(View.INVISIBLE);
+            adapter.setDatos(personajes);
+        });
 
         adapter.setClickListener(new AdapterRyM.ItemClickListener() {
             @Override
-            public void onClick(View view, int position, PersonajeRyM personaje ) {
+            public void onClick(View view, int position, PersonajeRyM personaje) {
                 Intent i = new Intent(ListaPersonajes.this, DetallesPersonaje.class);
-                i.putExtra(ListaPersonajes.CLAVE_PERSONAJE,personaje);
+                i.putExtra(ListaPersonajes.CLAVE_PERSONAJE, personaje);
                 startActivity(i);
             }
         });

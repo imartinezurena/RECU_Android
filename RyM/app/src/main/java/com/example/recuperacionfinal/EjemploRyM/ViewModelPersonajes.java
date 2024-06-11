@@ -15,17 +15,17 @@ public class ViewModelPersonajes extends ViewModel {
     MutableLiveData<ArrayList<PersonajeRyM>> misDatos;//se crea una lista del tipo de dato a usar (POJO)
     ServiceRyM sr; //se crea una instancia del Service
 
-    public LiveData<ArrayList<PersonajeRyM>> getDatos(int id) {//este dato cual tiene que ser??
+    public LiveData<ArrayList<PersonajeRyM>> getDatos() {//este dato cual tiene que ser??
         if (misDatos == null) {
             misDatos = new MutableLiveData<ArrayList<PersonajeRyM>>();
             sr = ServiceRyM.getInstancia();
-            addDatos( id);
+            addDatos();
         }
         return misDatos;
     }
 
     //a partir de aquí es el metodo que gestiona la llamada,
-    private void addDatos(int id) {
+    private void addDatos() {
         new Thread(()->{
             ServiceRyM ser = ServiceRyM.getInstancia();
             Call<List<PersonajeRyM>> llamada = ser.getRepo().getListaPersonajes();
@@ -51,5 +51,6 @@ public class ViewModelPersonajes extends ViewModel {
         }).start();
     }
 
-    }
+
+}
 

@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterRyM extends RecyclerView.Adapter<AdapterRyM.ViewHolder> {
-    private List<PersonajeRyM> personajes;
+    private List<PersonajeRyM> listaPersonajes;
 
     public AdapterRyM() {
-        personajes = new ArrayList<>();
+        listaPersonajes = new ArrayList<>();
     }
 
     public interface ItemClickListener {
@@ -52,7 +52,7 @@ public class AdapterRyM extends RecyclerView.Adapter<AdapterRyM.ViewHolder> {
         public void onClick(View view) {
             // Si tengo un manejador de evento lo propago con el índice
             if (clickListener != null)
-                clickListener.onClick(view, getAdapterPosition(), personajes.get(getAdapterPosition()));
+                clickListener.onClick(view, getAdapterPosition(), listaPersonajes.get(getAdapterPosition()));
         }
     }
 
@@ -68,12 +68,17 @@ public class AdapterRyM extends RecyclerView.Adapter<AdapterRyM.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        PersonajeRyM personaje = personajes.get(position);
+        PersonajeRyM personaje = listaPersonajes.get(position);
         holder.setName(personaje.getName());
     }
 
     @Override
     public int getItemCount() {
-        return personajes.size();
+        return listaPersonajes.size();
+    }
+    public void setDatos(ArrayList<PersonajeRyM> personajes) {
+        listaPersonajes.clear();
+        listaPersonajes.addAll(personajes);
+        notifyDataSetChanged();
     }
 }
